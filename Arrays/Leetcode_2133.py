@@ -25,20 +25,40 @@
             Hence, we return false.
 '''
 
-matrix = [[1,2,3],[3,1,2],[2,3,1]]
-row = len(matrix[0])
-Sn = (row * (row+1))//2
-colSum = 0
+matrix = [[1,2,3],[3,2,1],[2,3,1]]
 
-for i in range(0,len(matrix)):
-    # checks rows
-    if sum(matrix[i]) != Sn:
-        print(False)
-        break
-    # checks columns
-    for j in range(0,len(matrix)):
-        colSum += matrix[j][i]
-    if colSum != Sn:
-        print(False)
-    colSum = 0
-print("Loops ended", True)
+# row = len(matrix[0])
+# Sn = (row * (row+1))//2
+# colSum = 0
+
+# for i in range(0,len(matrix)):
+#     # checks rows
+#     if sum(matrix[i]) != Sn:
+#         print(False)
+#         break
+#     # checks columns
+#     for j in range(0,len(matrix)):
+#         colSum += matrix[j][i]
+#     if colSum != Sn:
+#         print(False)
+#     colSum = 0
+# print("Loops ended", True)
+
+'''
+    test failed
+    matrix = [[2,2,2],[2,2,2],[2,2,2]]
+'''
+
+for r in range(0,len(matrix)):
+    cVis = rVis = [False] * (len(matrix)+1)
+    for c in range(0,len(matrix)):
+        rVal = matrix[r][c]
+        cVal = matrix[c][r]
+
+        if rVis[rVal]==True or cVis[cVal]==True:
+            print(False)
+            break
+
+        rVis[rVal] = True
+        cVis[cVal] = True
+print("Program ended", True)
