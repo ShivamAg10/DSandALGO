@@ -27,23 +27,15 @@
             4
 '''
 
-nums = [1,3,5,6]
-target = 2
+nums = [1,3]
+target = 0
 
-left = 0
-right = len(nums)-1
-
-while left <= right:
-    mid = (left + right) // 2
-    if target == nums[mid]:
-        print(mid)
-        break
-    elif target < nums[mid]:
-        right = mid - 1
-    elif target > nums[mid]:
-        left = mid + 1
-
-nums.append(target)
-nums.sort()
-answer = nums.index(target)
-print(answer)
+if target in nums:
+    print(nums.index(target))
+else:
+    if nums[len(nums)-1]<target:
+        print(len(nums))
+    for i in range(len(nums)):
+        if nums[i]>target:
+            print(i)
+            break
