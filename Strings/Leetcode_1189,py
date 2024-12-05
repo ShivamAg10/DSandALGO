@@ -1,0 +1,16 @@
+from collections import Counter
+
+class Solution:
+    def maxNumberOfBalloons(self, text: str) -> int:
+        sett = Counter(text)
+        balloon = {'b':0, "a":0, "l":0, "o":0, "n":0}
+        for i in sett:
+            if i=="b" or i=="a" or i=="l" or i=="o" or i=="n":
+                balloon[i] = sett[i]
+        count = balloon['b']
+        balloon['l'] = balloon['l']//2
+        balloon['o'] = balloon['o']//2
+        for i in balloon:
+            if balloon[i] < count:
+                count = balloon[i]
+        return count
